@@ -1,0 +1,50 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+.whole {
+  background-color: burlywood;
+  width: 95vw;
+  max-width: 500px;
+  margin: 4rem auto;
+  padding: 10px;
+}
+
+.section1 {
+  background-color: green;
+  display: flex;
+  justify-content: space-between;
+  height: fit-content;
+  margin: 1rem 0;
+  padding: 10px;
+}
+
+.section1 input {
+  height: 30px;
+}
+
+.user {
+  background-color: #555;
+  margin: 1rem auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-height: 70px;
+}
+
+.user .user-profile {
+  background: url("../images/user\ profile.png");
+  height: 100%;
+  width: 50px;
+}
+
+.user-profile p,
+.user-profile p {
+  font-size: large;
+  line-height: 50px;
+  background-color: gold;
+}
