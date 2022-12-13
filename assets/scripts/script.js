@@ -26,6 +26,9 @@ let arrayOfUsers = [
   {name: "Lebron James", age: 37},
   {name: "Jamel Morant", age: 21},
   {name: "Steve Dogllas", age: 19},
+  {name: "Steve Dogllas", age: 19},
+  {name: "Steve Dogllas", age: 19},
+  {name: "Steve Dogllas", age: 19},
   {name: "Senior Dev", age: 19},
   {name: "Jango Kelmith", age: 19},
 ]
@@ -36,12 +39,15 @@ const userContainers = document.querySelector('.all-users');
 function displayUser({age, name}) {
   return `
   <div class="user">
-      <div class="user-profile"></div>
-      <div>
-          <p class="user-name">${name}</p>
-          <p class="user-age">${age} year${age >1? "s": ""}</p>
-      </div>
-  </div>`
+    <div class="user-profile"></div>
+    <div>
+        <div class="text">
+            <p class="user-name">${name}</p>
+            <p class="user-age">${age} year${age >1? "s": ""}</p>
+        </div>
+        <button class="remove-user"><span>X</span> Remove user</button>
+    </div>
+</div>`
 }
 
 function displayUsers(persons) { // for loop method of displaying
@@ -52,16 +58,16 @@ function displayUsers(persons) { // for loop method of displaying
   return template
 }
 
-/* function displayUsers(persons) {
+/* function displayUsers(persons) { // this the altinate of the foor loop
   return persons.map(displayUser).join("")
 } */
 
-userContainers.innerHTML = displayUsers(arrayOfUsers);
+// userContainers.innerHTML = displayUsers(arrayOfUsers);
 
 function searchUsers(name, age) { // for loop method of searching
   let results = [];
   for(let i=0; i<arrayOfUsers.length; i++) {
-    if((!name || arrayOfUsers[i].name === name) || (!age || arrayOfUsers[i].age === age)) {
+    if(((!name || arrayOfUsers[i].name === name)||(arrayOfUsers[i].name.includes(name))) && (!age || arrayOfUsers[i].age === age)) {
       results.push(arrayOfUsers[i])
     }
   }
