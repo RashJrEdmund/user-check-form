@@ -49,7 +49,7 @@ body {
 
 .user .user-profile {
   background-image: url("../images/user\ profile.png");
-  background-size: contain;
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   width: 90px;
