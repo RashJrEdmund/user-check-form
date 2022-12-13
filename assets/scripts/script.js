@@ -27,7 +27,7 @@ let arrayOfUsers = [
   {name: "Jamel Morant", age: 21},
   {name: "Steve Dogllas", age: 19},
   {name: "Senior Dev", age: 19},
-  {name: "Faye Kelmith", age: 19},
+  {name: "Jango Kelmith", age: 19},
 ]
 
 const form = document.querySelector('form');
