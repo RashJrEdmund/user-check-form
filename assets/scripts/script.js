@@ -5,32 +5,33 @@ let arrayOfUsers = [
   {name: "Edmund Son", age: 22},
   {name: "Orashus F.", age: 17},
   {name: "Luciernaga Ndi", age: 19},
+  {name: "The Godfather", age: 20},
   {name: "Storm King", age: 16},
-  {name: "Brandy Jonathan", age: 16},
+  {name: "Brandy Jonathan", age: 21},
   {name: "Marry Anne", age: 20},
-  {name: "Alaric Mboma", age: 11},
+  {name: "Alaric Mboma", age: 21},
   {name: "Shey Emma", age: 29},
   {name: "Tata Malone", age: 20},
   {name: "Abu Bea", age: 24},
   {name: "Charles Peterson", age: 24},
   {name: "Mr. Gaston", age: 31},
-  {name: "Uncle Leo", age: 29},
+  {name: "Uncle Leo", age: 30},
   {name: "Mme Faith", age: 28},
   {name: "Gran Humphry", age: 20},
   {name: "Mr Array", age: 26},
   {name: "Ashley Jones", age: 15},
-  {name: "Kilian Mbappe", age: 23},
+  {name: "Kilian Mbappe", age: 26},
   {name: "Christiano Ronaldo", age: 37},
   {name: "Leonel Messi", age: 36},
   {name: "Zlatan Ibrahim", age: 40},
   {name: "Lebron James", age: 37},
   {name: "Jamel Morant", age: 21},
   {name: "Steve Dogllas", age: 19},
-  {name: "Steve Dogllas", age: 19},
-  {name: "Steve Dogllas", age: 19},
-  {name: "Steve Dogllas", age: 19},
+  {name: "Steve Rogers", age: 30},
+  {name: "Vin Diesel", age: 28},
+  {name: "Jack Sparrow", age: 28},
   {name: "Senior Dev", age: 19},
-  {name: "Jango Kelmith", age: 19},
+  {name: "Jango Kelmith", age: 20},
 ]
 
 const form = document.querySelector('form');
@@ -68,7 +69,7 @@ function displayUsers(persons) { // for loop method of displaying
 function searchUsers(name, age) { // for loop method of searching
   let results = [];
   for(let i=0; i<arrayOfUsers.length; i++) {
-    if(((!name || arrayOfUsers[i].name === name)||(arrayOfUsers[i].name.includes(name))) && (!age || arrayOfUsers[i].age === age)) {
+    if(((!name || arrayOfUsers[i].name === name)||(arrayOfUsers[i].name.toLowerCase.includes(name).toLowerCase)) && (!age || arrayOfUsers[i].age === age)) {
       results.push(arrayOfUsers[i])
     }
   }
@@ -87,7 +88,7 @@ form.addEventListener("submit", (e) =>{
   );
 });
 
-/* 
+/*
 let initials =(name) => {
   return name
     .split(" ")
