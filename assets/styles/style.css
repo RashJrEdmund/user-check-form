@@ -19,6 +19,7 @@ body {
 .section1 {
   background-color: #555;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   height: fit-content;
   margin: 1rem 0;
