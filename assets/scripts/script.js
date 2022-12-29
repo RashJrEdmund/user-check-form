@@ -37,10 +37,10 @@ let arrayOfUsers = [
 const form = document.querySelector('form');
 const userContainers = document.querySelector('.all-users');
 
-function displayUser({age, name}) {
+function displayUser({age, name}, init) {
   return `
   <div class="user">
-    <div class="user-profile"></div>
+    <div class="user-profile">${init}</div>
     <div>
         <div class="text">
             <p class="user-name">${name}</p>
@@ -51,10 +51,23 @@ function displayUser({age, name}) {
 </div>`
 }
 
+const getInitials = (name) => {
+  let arra = [...name]
+  let final = arra[0]
+  for (let j = 0; j < arra.length; j++) {
+    if (arra[j].includes(' ')) {
+      final += arra[j+1]
+    }
+  }
+  return final
+}
+
 function displayUsers(persons) { // for loop method of displaying
-  let template = "";
+  let template = ""
+  let firsTwoLetters = ''
   for (let i=0; i<persons.length; i++) {
-    template += displayUser(persons[i]);
+    firsTwoLetters = getInitials(persons[i].name)
+    template += displayUser(persons[i], firsTwoLetters)
   }
 
   return template
@@ -64,7 +77,7 @@ function displayUsers(persons) { // for loop method of displaying
   return persons.map(displayUser).join("")
 } */
 
-// userContainers.innerHTML = displayUsers(arrayOfUsers);
+userContainers.innerHTML = displayUsers(arrayOfUsers);
 
 function searchUsers(name, age) { // for loop method of searching
   let results = [];
@@ -87,14 +100,6 @@ form.addEventListener("submit", (e) =>{
     searchUsers(e.target.name.value, +e.target.age.value)
   );
 });
-
-/*
-let initials =(name) => {
-  return name
-    .split(" ")
-    .map((yo) => yo.[0].toUppercase())
-    .join(".");
-} */
 
 function shouldResolve() {
   return Math.random() < 0.85;
