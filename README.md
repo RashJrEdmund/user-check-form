@@ -10,7 +10,7 @@ This project was a simple assignment given to test our still growing skills. it'
 This page is basically built with just
 * HTML and
 * CSS for styling.
-* Javascript
+* JavaScript
 
 ### PREREQUISITES
 * You should already have a stable browser to use.

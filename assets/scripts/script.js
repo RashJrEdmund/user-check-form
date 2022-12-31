@@ -74,7 +74,6 @@ function displayUsers (persons) { // for loop method of displaying
     firsTwoLetters = getInitials(persons[i].name)
     template += displayUser(persons[i], firsTwoLetters)
   }
-
   return template
 }
 
