@@ -39,6 +39,11 @@ body {
   align-self: flex-end;
 }
 
+.all-users {
+  padding: 10px;
+  position: relative;
+}
+
 .user {
   background-color: #777;
   margin: 1rem auto;
@@ -46,6 +51,15 @@ body {
   align-items: center;
   height: fit-content;
   min-height: 70px;
+  transition: 0.5s;
+}
+
+.display-div {
+  background-color: green;
+  position: absolute;
+  width: 100%;
+  top: unset;
+  right: -100%;
 }
 
 .user .user-profile {

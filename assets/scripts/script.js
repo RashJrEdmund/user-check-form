@@ -34,13 +34,18 @@ let arrayOfUsers = [
   {name: "Jango Kelmith", age: 20},
 ]
 
-const form = document.querySelector('form');
-const userContainers = document.querySelector('.all-users');
+const form = document.querySelector('form')
+const userContainers = document.querySelector('.all-users')
+const user = document.querySelectorAll('.user')
+const removeUserBtn = document.querySelectorAll('.remove-user')
 
-function displayUser({age, name}, init) {
+let asssi = 'manda'
+console.log(asssi.toLocaleUpperCase())
+
+function displayUser({age, name}, acronym) {
   return `
   <div class="user">
-    <div class="user-profile">${init}</div>
+    <div class="user-profile">${acronym}</div>
     <div>
         <div class="text">
             <p class="user-name">${name}</p>
@@ -48,7 +53,7 @@ function displayUser({age, name}, init) {
         </div>
         <button class="remove-user"><span>X</span> Remove user</button>
     </div>
-</div>`
+  </div>`
 }
 
 const getInitials = (name) => {
@@ -65,7 +70,7 @@ const getInitials = (name) => {
 function displayUsers(persons) { // for loop method of displaying
   let template = ""
   let firsTwoLetters = ''
-  for (let i=0; i<persons.length; i++) {
+  for (let i = 0; i < persons.length; i++) {
     firsTwoLetters = getInitials(persons[i].name)
     template += displayUser(persons[i], firsTwoLetters)
   }
@@ -77,12 +82,12 @@ function displayUsers(persons) { // for loop method of displaying
   return persons.map(displayUser).join("")
 } */
 
-userContainers.innerHTML = displayUsers(arrayOfUsers);
+// userContainers.innerHTML = displayUsers(arrayOfUsers);
 
 function searchUsers(name, age) { // for loop method of searching
   let results = [];
   for(let i=0; i<arrayOfUsers.length; i++) {
-    if(((!name || arrayOfUsers[i].name === name)||(arrayOfUsers[i].name.toLowerCase.includes(name).toLowerCase)) && (!age || arrayOfUsers[i].age === age)) {
+    if(((!name || arrayOfUsers[i].name === name)||((arrayOfUsers[i].name).toLowerCase().includes(name.toLowerCase()))) && (!age || arrayOfUsers[i].age === age)) {
       results.push(arrayOfUsers[i])
     }
   }
@@ -106,23 +111,23 @@ function shouldResolve() {
 }
 
 
-// function searchUsers(name, age) {
-//   return new Promise ((resolve, reject) => {
-//     setTimeout(() => {
-//       if (shouldResolve ()) {
-//         resolve(
-//           arrayOfUsers.filter(
-//             (user) => 
-//             (!name || searchUsers(user.name, name)) &&
-//             (!age || user.age === age)
-//           )
-//         );
-//       }else {
-//         reject([]);
-//       }
-//     }, 2000);
-//   });
-// }
+/* function searchUsers(name, age) {
+  return new Promise ((resolve, reject) => {
+    setTimeout(() => {
+      if (shouldResolve ()) {
+        resolve(
+          arrayOfUsers.filter(
+            (user) => 
+            (!name || searchUsers(user.name, name)) &&
+            (!age || user.age === age)
+          )
+        );
+      }else {
+        reject([]);
+      }
+    }, 2000);
+  });
+} */
 
 // function renderMessage(message) {
 //   return `<div class="message">${message}</div>`;
@@ -143,3 +148,30 @@ function shouldResolve() {
 //     );
 //   });
 // });
+
+/* removeUserBtn.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    console.log(btn, parseInt(btn.value))
+    let firsTwoLetters = ''
+    let template = ''
+    for (let i = 0; i < arrayOfUsers.length; i++) {
+      if (i == btn.value) {
+        continue
+      }
+      firsTwoLetters = getInitials(arrayOfUsers[i].name)
+      template += displayUser(arrayOfUsers[i], firsTwoLetters)
+    }
+    userContainers.innerHTML = template
+  })
+}) */
+
+/* removeUserBtn.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    console.log('shishs')
+    console.log(user)
+    user.forEach((someone) => {
+      console.log(someone)
+      someone.classList.toggle('.display-div')
+    })
+  })
+}) */
