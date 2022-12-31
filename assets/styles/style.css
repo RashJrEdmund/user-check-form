@@ -55,7 +55,7 @@ body {
 }
 
 .display-div {
-  background-color: green;
+  background-color: #080;
   position: absolute;
   width: 100%;
   top: unset;
@@ -63,10 +63,12 @@ body {
 }
 
 .user .user-profile {
+
   /* background-image: url("../images/user\ profile.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat; */
+
   background-color: #000;
   border-radius: 50px;
   color: #a52a2a;
@@ -107,6 +109,6 @@ body {
 
 .user button span {
   font-size: 30px;
-  color: black;
+  color: #000;
   margin-right: 2px;
 }

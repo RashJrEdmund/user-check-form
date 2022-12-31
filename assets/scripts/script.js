@@ -1,37 +1,37 @@
-let arrayOfUsers = [
-  {name: "Rash Oracle", age: 20},
-  {name: "Nana Otto", age: 20},
-  {name: "Jr Jr", age: 21},
-  {name: "Edmund Son", age: 22},
-  {name: "Orashus F.", age: 17},
-  {name: "Luciernaga Ndi", age: 19},
-  {name: "The Godfather", age: 20},
-  {name: "Storm King", age: 16},
-  {name: "Brandy Jonathan", age: 21},
-  {name: "Marry Anne", age: 20},
-  {name: "Alaric Mboma", age: 21},
-  {name: "Shey Emma", age: 29},
-  {name: "Tata Malone", age: 20},
-  {name: "Abu Bea", age: 24},
-  {name: "Charles Peterson", age: 24},
-  {name: "Mr. Gaston", age: 31},
-  {name: "Uncle Leo", age: 30},
-  {name: "Mme Faith", age: 28},
-  {name: "Gran Humphry", age: 20},
-  {name: "Mr Array", age: 26},
-  {name: "Ashley Jones", age: 15},
-  {name: "Kilian Mbappe", age: 26},
-  {name: "Christiano Ronaldo", age: 37},
-  {name: "Leonel Messi", age: 36},
-  {name: "Zlatan Ibrahim", age: 40},
-  {name: "Lebron James", age: 37},
-  {name: "Jamel Morant", age: 21},
-  {name: "Steve Dogllas", age: 19},
-  {name: "Steve Rogers", age: 30},
-  {name: "Vin Diesel", age: 28},
-  {name: "Jack Sparrow", age: 28},
-  {name: "Senior Dev", age: 19},
-  {name: "Jango Kelmith", age: 20},
+const arrayOfUsers = [
+  { name: 'Rash Oracle', age: 20 },
+  { name: 'Nana Otto', age: 20 },
+  { name: 'Jr Jr', age: 21 },
+  { name: 'Edmund Son', age: 22 },
+  { name: 'Orashus F.', age: 17 },
+  { name: 'Luciernaga Ndi', age: 19 },
+  { name: 'The Godfather', age: 20 },
+  { name: 'Storm King', age: 16 },
+  { name: 'Brandy Jonathan', age: 21 },
+  { name: 'Marry Anne', age: 20 },
+  { name: 'Alaric Mboma', age: 21 },
+  { name: 'Shey Emma', age: 29 },
+  { name: 'Tata Malone', age: 20 },
+  { name: 'Abu Bea', age: 24 },
+  { name: 'Charles Peterson', age: 24 },
+  { name: 'Mr. Gaston', age: 31 },
+  { name: 'Uncle Leo', age: 30 },
+  { name: 'Mme Faith', age: 28 },
+  { name: 'Gran Humphry', age: 20 },
+  { name: 'Mr Array', age: 26 },
+  { name: 'Ashley Jones', age: 15 },
+  { name: 'Kilian Mbappe', age: 26 },
+  { name: 'Christiano Ronaldo', age: 37 },
+  { name: 'Leonel Messi', age: 36 },
+  { name: 'Zlatan Ibrahim', age: 40 },
+  { name: 'Lebron James', age: 37 },
+  { name: 'Jamel Morant', age: 21 },
+  { name: 'Steve Dogllas', age: 19 },
+  { name: 'Steve Rogers', age: 30 },
+  { name: 'Vin Diesel', age: 28 },
+  { name: 'Jack Sparrow', age: 28 },
+  { name: 'Senior Dev', age: 19 },
+  { name: 'Jango Kelmith', age: 20 }
 ]
 
 const form = document.querySelector('form')
@@ -39,17 +39,17 @@ const userContainers = document.querySelector('.all-users')
 const user = document.querySelectorAll('.user')
 const removeUserBtn = document.querySelectorAll('.remove-user')
 
-let asssi = 'manda'
+const asssi = 'manda'
 console.log(asssi.toLocaleUpperCase())
 
-function displayUser({age, name}, acronym) {
+function displayUser ({ age, name }, acronym) {
   return `
   <div class="user">
     <div class="user-profile">${acronym}</div>
     <div>
         <div class="text">
             <p class="user-name">${name}</p>
-            <p class="user-age">${age} year${age >1? "s": ""}</p>
+            <p class="user-age">${age} year${age > 1 ? 's' : ''}</p>
         </div>
         <button class="remove-user"><span>X</span> Remove user</button>
     </div>
@@ -57,18 +57,18 @@ function displayUser({age, name}, acronym) {
 }
 
 const getInitials = (name) => {
-  let arra = [...name]
+  const arra = [...name]
   let final = arra[0]
   for (let j = 0; j < arra.length; j++) {
     if (arra[j].includes(' ')) {
-      final += arra[j+1]
+      final += arra[j + 1]
     }
   }
   return final
 }
 
-function displayUsers(persons) { // for loop method of displaying
-  let template = ""
+function displayUsers (persons) { // for loop method of displaying
+  let template = ''
   let firsTwoLetters = ''
   for (let i = 0; i < persons.length; i++) {
     firsTwoLetters = getInitials(persons[i].name)
@@ -84,10 +84,10 @@ function displayUsers(persons) { // for loop method of displaying
 
 // userContainers.innerHTML = displayUsers(arrayOfUsers);
 
-function searchUsers(name, age) { // for loop method of searching
-  let results = [];
-  for(let i=0; i<arrayOfUsers.length; i++) {
-    if(((!name || arrayOfUsers[i].name === name)||((arrayOfUsers[i].name).toLowerCase().includes(name.toLowerCase()))) && (!age || arrayOfUsers[i].age === age)) {
+function searchUsers (name, age) { // for loop method of searching
+  const results = []
+  for (let i = 0; i < arrayOfUsers.length; i++) {
+    if (((!name || arrayOfUsers[i].name === name) || ((arrayOfUsers[i].name).toLowerCase().includes(name.toLowerCase()))) && (!age || arrayOfUsers[i].age === age)) {
       results.push(arrayOfUsers[i])
     }
   }
@@ -99,17 +99,16 @@ function searchUsers(name, age) { // for loop method of searching
   ); */
 }
 
-form.addEventListener("submit", (e) =>{
-  e.preventDefault();
+form.addEventListener('submit', (e) => {
+  e.preventDefault()
   userContainers.innerHTML = displayUsers(
     searchUsers(e.target.name.value, +e.target.age.value)
-  );
-});
+  )
+})
 
-function shouldResolve() {
-  return Math.random() < 0.85;
+function shouldResolve () {
+  return Math.random() < 0.85
 }
-
 
 /* function searchUsers(name, age) {
   return new Promise ((resolve, reject) => {
@@ -117,7 +116,7 @@ function shouldResolve() {
       if (shouldResolve ()) {
         resolve(
           arrayOfUsers.filter(
-            (user) => 
+            (user) =>
             (!name || searchUsers(user.name, name)) &&
             (!age || user.age === age)
           )
