@@ -15,7 +15,7 @@ const arrayOfUsers = [
   { name: 'Abu Bea', age: 24 },
   { name: 'Charles Peterson', age: 24 },
   { name: 'Mr. Gaston', age: 31 },
-  { name: 'Uncle Leo', age: 30 },
+  { name: 'Mr. Leonard', age: 30 },
   { name: 'Mme Faith', age: 28 },
   { name: 'Gran Humphry', age: 20 },
   { name: 'Mr Array', age: 26 },
@@ -51,7 +51,7 @@ function displayUser ({ age, name }, acronym) {
             <p class="user-name">${name}</p>
             <p class="user-age">${age} year${age > 1 ? 's' : ''}</p>
         </div>
-        <button class="remove-user"><span>X</span> Remove user</button>
+        <button class="remove-user" value="${name} ${age}"><span>X</span> Remove user</button>
     </div>
   </div>`
 }
@@ -179,13 +179,35 @@ form.addEventListener("submit", (e) => {
   })
 }) */
 
-/* removeUserBtn.forEach((btn) => {
+const checkBtnValue = (btnVal) => {
+  let result = []
+  for (let i = 0; i < arrayOfUsers.length; i++) {
+    if (btnVal === (arrayOfUsers[i].name + ' ' + arrayOfUsers[i].age)) {
+      result.push(arrayOfUsers[i])
+    }
+  }
+  return result
+}
+
+let deletedUsers = []
+
+let arrKeys = Object.keys(arrayOfUsers[0])
+console.log('this is the arrkeys', arrKeys)
+
+let arrObj = arrKeys.map((key) => { // the .map() method takes an anonymous function as a parameter
+  return {[key]: arrayOfUsers[0][key]}
+})
+console.log('this is arrobj', arrObj)
+
+removeUserBtn.forEach((btn) => {
   btn.addEventListener('click', () => {
     console.log('shishs')
-    console.log(user)
+    console.log(btn.value)
+    deletedUsers = checkBtnValue(btn.value)
+    console.log('these are the deleted users', deletedUsers)
     user.forEach((someone) => {
-      console.log(someone)
+      // console.log(someone)
       someone.classList.toggle('.display-div')
     })
   })
-}) */
+})
