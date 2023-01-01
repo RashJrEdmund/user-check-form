@@ -81,33 +81,35 @@ function displayUsers (persons) { // for loop method of displaying
   return persons.map(displayUser).join("")
 } */
 
-// userContainers.innerHTML = displayUsers(arrayOfUsers);
+// // userContainers.innerHTML = displayUsers(arrayOfUsers);
 
-function searchUsers (name, age) { // for loop method of searching
-  const results = []
-  for (let i = 0; i < arrayOfUsers.length; i++) {
-    if (((!name || arrayOfUsers[i].name === name) || ((arrayOfUsers[i].name).toLowerCase().includes(name.toLowerCase()))) && (!age || arrayOfUsers[i].age === age)) {
-      results.push(arrayOfUsers[i])
-    }
-  }
+// function searchUsers (name, age) { // for loop method of searching
+//   const results = []
+//   for (let i = 0; i < arrayOfUsers.length; i++) {
+//     if (((!name || arrayOfUsers[i].name === name) || ((arrayOfUsers[i].name).toLowerCase().includes(name.toLowerCase()))) && (!age || arrayOfUsers[i].age === age)) {
+//       results.push(arrayOfUsers[i])
+//     }
+//   }
 
-  return results
+//   return results
 
-  /* return users.filter (
-    (arrayOfUsers)=>(!name || arrayOfUsers.name == name) && (!age || arrayOfUsers.age == age)
-  ); */
-}
+//   /* return users.filter (
+//     (((!name || arrayOfUsers[i].name === name) || ((arrayOfUsers[i].name).toLowerCase().includes(name.toLowerCase()))) && (!age || arrayOfUsers[i].age === age))
+//   ); */
+// }
 
-form.addEventListener('submit', (e) => {
-  e.preventDefault()
-  userContainers.innerHTML = displayUsers(
-    searchUsers(e.target.name.value, +e.target.age.value)
-  )
-})
+// form.addEventListener('submit', (e) => {
+//   e.preventDefault()
+//   userContainers.innerHTML = displayUsers(
+//     searchUsers(e.target.name.value, +e.target.age.value)
+//   )
+// })
 
 function shouldResolve () {
   return Math.random() < 0.85
 }
+
+// boundary line
 
 /* function searchUsers(name, age) {
   return new Promise ((resolve, reject) => {
@@ -127,25 +129,37 @@ function shouldResolve () {
   });
 } */
 
-// function renderMessage(message) {
-//   return `<div class="message">${message}</div>`;
-// }
+// // use this part of the code below to text a copy of the above promise
+// /* function searchUsers (name, age) { // for loop method of searching
+//   const results = []
+//   for (let i = 0; i < arrayOfUsers.length; i++) {
+//     if (((!name || arrayOfUsers[i].name === name) || ((arrayOfUsers[i].name).toLowerCase().includes(name.toLowerCase()))) && (!age || arrayOfUsers[i].age === age)) {
+//       results.push(arrayOfUsers[i])
+//     }
+//   }
+
+//   return results
+// } */
+
+function renderMessage(message) {
+  return `<div class="message">${message}</div>`;
+}
 
 // // userContainers.innerHTML = displayUsers(arrayOfUsers);
 
-// form.addEventListener("submit", (e) => {
-//   e.preventDefault();
-//   userContainers.innerHTML = renderMessage("searching users...");
-//   searchUsers(e.target.name.value, +e.target.age.value)
-//   .then((result) => {
-//     userContainers.innerHTML = displayUser(result);
-//   })
-//   .catch((e) => {
-//     userContainers.innerHTML = renderMessage(
-//       "Error loading users! Please try again"
-//     );
-//   });
-// });
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  userContainers.innerHTML = renderMessage("searching users...");
+  searchUsers(e.target.name.value, +e.target.age.value)
+  .then((result) => {
+    userContainers.innerHTML = displayUser(result);
+  })
+  .catch((e) => {
+    userContainers.innerHTML = renderMessage(
+      "Error loading users! Please try again"
+    );
+  });
+});
 
 /* removeUserBtn.forEach((btn) => {
   btn.addEventListener('click', () => {
