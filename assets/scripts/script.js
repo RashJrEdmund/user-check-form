@@ -60,7 +60,7 @@ const getInitials = (name) => {
   const arra = [...name]
   let final = arra[0]
   for (let j = 0; j < arra.length; j++) {
-    if (arra[j].includes(' ') && typeof(arra[j + 1] === String)) {
+    if (arra[j].includes(' ') && typeof (arra[j + 1] === String)) {
       final += arra[j + 1]
     }
   }
@@ -91,7 +91,7 @@ function searchUsersLoop (name, age) { // for loop method of searching
     }
   }
 
-  return displayUsers (results)
+  return displayUsers(results)
 
   /* return users.filter (
     (((!name || arrayOfUsers[i].name === name) || ((arrayOfUsers[i].name).toLowerCase().includes(name.toLowerCase()))) && (!age || arrayOfUsers[i].age === age))
@@ -105,10 +105,9 @@ function searchUsersLoop (name, age) { // for loop method of searching
 //   )
 // })
 
-
 // boundary line
 
-/* function searchUsers(name, age) {
+/* function searchUsers (name, age) {
   return new Promise ((resolve, reject) => {
     setTimeout(() => {
       if (shouldResolve ()) {
@@ -126,8 +125,8 @@ function searchUsersLoop (name, age) { // for loop method of searching
   })
 } */
 
-function searchUsers(name, age) {
-  return new Promise ((resolve, reject) => {
+function searchUsers (name, age) {
+  return new Promise((resolve, reject) => {
     setTimeout(() => {
       let bool = false
       for (let i = 0; i < arrayOfUsers.length; i++) {
@@ -139,26 +138,26 @@ function searchUsers(name, age) {
         resolve(searchUsersLoop(name, age))
       } else {
         console.log('nothing here')
-        reject([])
+        reject('nothing here')
       }
     }, 2000)
   })
 }
 
-function renderMessage(message) {
+function renderMessage (message) {
   return `<div class="message">${message}</div>`
 }
 
-form.addEventListener("submit", (e) => {
+form.addEventListener('submit', (e) => {
   e.preventDefault()
-  userContainers.innerHTML = renderMessage("searching users...")
+  userContainers.innerHTML = renderMessage('searching users...')
   searchUsers(e.target.name.value, +e.target.age.value)
   .then((result) => {
     userContainers.innerHTML = result
   })
   .catch((e) => {
     userContainers.innerHTML = renderMessage(
-      "Error loading users! Please try again"
+      'Error loading users! Please try again'
     )
   })
 })
@@ -179,8 +178,8 @@ form.addEventListener("submit", (e) => {
   })
 }) */
 
-const checkBtnValue = (btnVal) => {
-  let result = []
+/* const checkBtnValue = (btnVal) => {
+  const result = []
   for (let i = 0; i < arrayOfUsers.length; i++) {
     if (btnVal === (arrayOfUsers[i].name + ' ' + arrayOfUsers[i].age)) {
       result.push(arrayOfUsers[i])
@@ -191,11 +190,11 @@ const checkBtnValue = (btnVal) => {
 
 let deletedUsers = []
 
-let arrKeys = Object.keys(arrayOfUsers[0])
+const arrKeys = Object.keys(arrayOfUsers[0])
 console.log('this is the arrkeys', arrKeys)
 
-let arrObj = arrKeys.map((key) => { // the .map() method takes an anonymous function as a parameter
-  return {[key]: arrayOfUsers[0][key]}
+const arrObj = arrKeys.map((key) => { // the .map() method takes an anonymous function as a parameter
+  return { [key]: arrayOfUsers[0][key] }
 })
 console.log('this is arrobj', arrObj)
 
@@ -210,4 +209,4 @@ removeUserBtn.forEach((btn) => {
       someone.classList.toggle('.display-div')
     })
   })
-})
+}) */
