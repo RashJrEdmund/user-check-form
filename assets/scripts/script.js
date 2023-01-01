@@ -60,7 +60,7 @@ const getInitials = (name) => {
   const arra = [...name]
   let final = arra[0]
   for (let j = 0; j < arra.length; j++) {
-    if (arra[j].includes(' ')) {
+    if (arra[j].includes(' ') && typeof(arra[j + 1] === String)) {
       final += arra[j + 1]
     }
   }
@@ -81,22 +81,22 @@ function displayUsers (persons) { // for loop method of displaying
   return persons.map(displayUser).join("")
 } */
 
-// // userContainers.innerHTML = displayUsers(arrayOfUsers);
+// userContainers.innerHTML = displayUsers(arrayOfUsers);
 
-// function searchUsers (name, age) { // for loop method of searching
-//   const results = []
-//   for (let i = 0; i < arrayOfUsers.length; i++) {
-//     if (((!name || arrayOfUsers[i].name === name) || ((arrayOfUsers[i].name).toLowerCase().includes(name.toLowerCase()))) && (!age || arrayOfUsers[i].age === age)) {
-//       results.push(arrayOfUsers[i])
-//     }
-//   }
+function searchUsersLoop (name, age) { // for loop method of searching
+  const results = []
+  for (let i = 0; i < arrayOfUsers.length; i++) {
+    if (((!name || arrayOfUsers[i].name === name) || ((arrayOfUsers[i].name).toLowerCase().includes(name.toLowerCase()))) && (!age || arrayOfUsers[i].age === age)) {
+      results.push(arrayOfUsers[i])
+    }
+  }
 
-//   return results
+  return displayUsers (results)
 
-//   /* return users.filter (
-//     (((!name || arrayOfUsers[i].name === name) || ((arrayOfUsers[i].name).toLowerCase().includes(name.toLowerCase()))) && (!age || arrayOfUsers[i].age === age))
-//   ); */
-// }
+  /* return users.filter (
+    (((!name || arrayOfUsers[i].name === name) || ((arrayOfUsers[i].name).toLowerCase().includes(name.toLowerCase()))) && (!age || arrayOfUsers[i].age === age))
+  ); */
+}
 
 // form.addEventListener('submit', (e) => {
 //   e.preventDefault()
@@ -105,9 +105,6 @@ function displayUsers (persons) { // for loop method of displaying
 //   )
 // })
 
-function shouldResolve () {
-  return Math.random() < 0.85
-}
 
 // boundary line
 
@@ -121,45 +118,50 @@ function shouldResolve () {
             (!name || searchUsers(user.name, name)) &&
             (!age || user.age === age)
           )
-        );
+        )
       }else {
-        reject([]);
+        reject([])
       }
-    }, 2000);
-  });
+    }, 2000)
+  })
 } */
 
-// // use this part of the code below to text a copy of the above promise
-// /* function searchUsers (name, age) { // for loop method of searching
-//   const results = []
-//   for (let i = 0; i < arrayOfUsers.length; i++) {
-//     if (((!name || arrayOfUsers[i].name === name) || ((arrayOfUsers[i].name).toLowerCase().includes(name.toLowerCase()))) && (!age || arrayOfUsers[i].age === age)) {
-//       results.push(arrayOfUsers[i])
-//     }
-//   }
-
-//   return results
-// } */
-
-function renderMessage(message) {
-  return `<div class="message">${message}</div>`;
+function searchUsers(name, age) {
+  return new Promise ((resolve, reject) => {
+    setTimeout(() => {
+      let bool = false
+      for (let i = 0; i < arrayOfUsers.length; i++) {
+        if (((arrayOfUsers[i].name).toLowerCase().includes(name.toLowerCase())) && (!age || arrayOfUsers[i].age === age)) {
+          bool = true
+        }
+      }
+      if (bool) {
+        resolve(searchUsersLoop(name, age))
+      } else {
+        console.log('nothing here')
+        reject([])
+      }
+    }, 2000)
+  })
 }
 
-// // userContainers.innerHTML = displayUsers(arrayOfUsers);
+function renderMessage(message) {
+  return `<div class="message">${message}</div>`
+}
 
 form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  userContainers.innerHTML = renderMessage("searching users...");
+  e.preventDefault()
+  userContainers.innerHTML = renderMessage("searching users...")
   searchUsers(e.target.name.value, +e.target.age.value)
   .then((result) => {
-    userContainers.innerHTML = displayUser(result);
+    userContainers.innerHTML = result
   })
   .catch((e) => {
     userContainers.innerHTML = renderMessage(
       "Error loading users! Please try again"
-    );
-  });
-});
+    )
+  })
+})
 
 /* removeUserBtn.forEach((btn) => {
   btn.addEventListener('click', () => {
