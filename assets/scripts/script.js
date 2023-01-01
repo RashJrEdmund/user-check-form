@@ -152,14 +152,14 @@ form.addEventListener('submit', (e) => {
   e.preventDefault()
   userContainers.innerHTML = renderMessage('searching users...')
   searchUsers(e.target.name.value, +e.target.age.value)
-  .then((result) => {
-    userContainers.innerHTML = result
-  })
-  .catch((e) => {
-    userContainers.innerHTML = renderMessage(
-      'Error loading users! Please try again'
-    )
-  })
+    .then((result) => {
+      userContainers.innerHTML = result
+    })
+    .catch((e) => {
+      userContainers.innerHTML = renderMessage(
+        'Error loading users! Please try again'
+      )
+    })
 })
 
 /* removeUserBtn.forEach((btn) => {
@@ -178,7 +178,7 @@ form.addEventListener('submit', (e) => {
   })
 }) */
 
-/* const checkBtnValue = (btnVal) => {
+const checkBtnValue = (btnVal) => {
   const result = []
   for (let i = 0; i < arrayOfUsers.length; i++) {
     if (btnVal === (arrayOfUsers[i].name + ' ' + arrayOfUsers[i].age)) {
@@ -209,4 +209,4 @@ removeUserBtn.forEach((btn) => {
       someone.classList.toggle('.display-div')
     })
   })
-}) */
+})
