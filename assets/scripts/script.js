@@ -42,18 +42,29 @@ const removeUserBtn = document.querySelectorAll('.remove-user')
 const asssi = 'manda'
 console.log(asssi.toLocaleUpperCase())
 
-function displayUser ({ age, name }, acronym) {
+function displayUser ({ age, name }, acronym, highlighted) {
   return `
   <div class="user">
     <div class="user-profile">${acronym}</div>
     <div>
         <div class="text">
-            <p class="user-name">${name}</p>
+            <p class="user-name">${name}/* ${name == '' ? name : getHIlight(name, highlighted)} */</p>
             <p class="user-age">${age} year${age > 1 ? 's' : ''}</p>
         </div>
         <button class="remove-user" value="${name} ${age}"><span>X</span> Remove user</button>
     </div>
   </div>`
+}
+
+const getHIlight = (name, keyWord) => {
+  for ( let i in name) {
+    if (name.toLowerCase() === keyWord.toLowerCase()) {
+      return name
+    } else if (name.charAt(i).toLowerCase() === keyWord.charAt(0).toLowerCase()) {
+      let keyWordLength = parseInt(keyWord.length) + parseInt(i)
+      return `${name.slice(0, i)}<span class="highlight">${name.slice(i, keyWordLength)}</span>${name.slice(keyWordLength, name.length)}`
+    }
+  }
 }
 
 const getInitials = (name) => {
@@ -67,12 +78,12 @@ const getInitials = (name) => {
   return final
 }
 
-function displayUsers (persons) { // for loop method of displaying
+function displayUsers (persons, highlight) { // for loop method of displaying
   let template = ''
   let firsTwoLetters = ''
   for (let i = 0; i < persons.length; i++) {
     firsTwoLetters = getInitials(persons[i].name)
-    template += displayUser(persons[i], firsTwoLetters)
+    template += displayUser(persons[i], firsTwoLetters, highlight)
   }
   return template
 }
@@ -86,12 +97,12 @@ function displayUsers (persons) { // for loop method of displaying
 function searchUsersLoop (name, age) { // for loop method of searching
   const results = []
   for (let i = 0; i < arrayOfUsers.length; i++) {
-    if (((!name || arrayOfUsers[i].name === name) || ((arrayOfUsers[i].name).toLowerCase().includes(name.toLowerCase()))) && (!age || arrayOfUsers[i].age === age)) {
+    if ((!name || (arrayOfUsers[i].name).toLowerCase().includes(name.toLowerCase())) && (!age || arrayOfUsers[i].age === age) /* && (name.includes('.')) */) {
       results.push(arrayOfUsers[i])
     }
   }
 
-  return displayUsers(results)
+  return displayUsers(results, name)
 
   /* return users.filter (
     (((!name || arrayOfUsers[i].name === name) || ((arrayOfUsers[i].name).toLowerCase().includes(name.toLowerCase()))) && (!age || arrayOfUsers[i].age === age))
@@ -130,7 +141,7 @@ function searchUsers (name, age) {
     setTimeout(() => {
       let bool = false
       for (let i = 0; i < arrayOfUsers.length; i++) {
-        if (((arrayOfUsers[i].name).toLowerCase().includes(name.toLowerCase())) && (!age || arrayOfUsers[i].age === age)) {
+        if ((!name || (arrayOfUsers[i].name).toLowerCase().includes(name.toLowerCase())) && (!age || arrayOfUsers[i].age === age)) {
           bool = true
         }
       }
@@ -140,7 +151,7 @@ function searchUsers (name, age) {
         console.log('nothing here')
         reject('nothing here')
       }
-    }, 2000)
+    }, 1500)
   })
 }
 
@@ -157,7 +168,7 @@ form.addEventListener('submit', (e) => {
     })
     .catch((e) => {
       userContainers.innerHTML = renderMessage(
-        'Error loading users! Please try again'
+        'Error! no user matches your search, please try again'
       )
     })
 })
@@ -179,31 +190,31 @@ form.addEventListener('submit', (e) => {
 }) */
 
 const checkBtnValue = (btnVal) => {
-  const result = []
+  const arrKeys = Object.keys(arrayOfUsers[0])
+  console.log('this is the arrkeys', arrKeys)
   for (let i = 0; i < arrayOfUsers.length; i++) {
     if (btnVal === (arrayOfUsers[i].name + ' ' + arrayOfUsers[i].age)) {
-      result.push(arrayOfUsers[i])
+      deletedUsers.push({[arrKeys[0]] : arrayOfUsers[i][arrKeys[0]], [arrKeys[1]] : arrayOfUsers[i][arrKeys[1]]})
     }
   }
-  return result
 }
 
 let deletedUsers = []
 
-const arrKeys = Object.keys(arrayOfUsers[0])
-console.log('this is the arrkeys', arrKeys)
+/* const arrKeys = Object.keys(arrayOfUsers[0])
 
 const arrObj = arrKeys.map((key) => { // the .map() method takes an anonymous function as a parameter
   return { [key]: arrayOfUsers[0][key] }
 })
-console.log('this is arrobj', arrObj)
+console.log('this is arrobj', arrObj) */
 
 removeUserBtn.forEach((btn) => {
   btn.addEventListener('click', () => {
     console.log('shishs')
     console.log(btn.value)
-    deletedUsers = checkBtnValue(btn.value)
+    checkBtnValue(btn.value)
     console.log('these are the deleted users', deletedUsers)
+    console.log(arrayOfUsers)
     user.forEach((someone) => {
       // console.log(someone)
       someone.classList.toggle('.display-div')

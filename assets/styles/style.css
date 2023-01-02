@@ -93,6 +93,11 @@ body {
   margin-left: 1rem;
 }
 
+.user-name .highlight {
+  background-color: #333;
+  color: #ffd700;
+}
+
 .user .remove-user {
   background-color: #a52a2a;
   display: flex;
