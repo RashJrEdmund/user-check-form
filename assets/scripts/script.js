@@ -48,7 +48,7 @@ function displayUser ({ age, name }, acronym, highlighted) {
     <div class="user-profile">${acronym}</div>
     <div>
         <div class="text">
-            <p class="user-name"><!--${name} -->/*${name == '' ? name : getHIlight(name, highlighted)} */</p>
+            <p class="user-name">${name}<!--/*${name == '' ? name : getHIlight(name, highlighted)} */ --></p>
             <p class="user-age">${age} year${age > 1 ? 's' : ''}</p>
         </div>
         <button class="remove-user" value="${name} ${age}"><span>X</span> Remove user</button>
@@ -214,7 +214,6 @@ removeUserBtn.forEach((btn) => {
     console.log(btn.value)
     checkBtnValue(btn.value)
     console.log('these are the deleted users', deletedUsers)
-    console.log(arrayOfUsers)
     user.forEach((someone) => {
       // console.log(someone)
       someone.classList.toggle('.display-div')
