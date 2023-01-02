@@ -57,14 +57,13 @@ function displayUser ({ age, name }, acronym, highlighted) {
 }
 
 const getHilight = (name, keyWord) => {
-  for ( let i in name) {
+  for (const i in name) {
+    const keyWordLength = parseInt(keyWord.length) + parseInt(i)
     if (name.toLowerCase() === keyWord.toLowerCase()) {
       return name
     } else if ((keyWord.length === 1) && (name.charAt(i).toLowerCase() === keyWord.charAt(0).toLowerCase())) {
-      let keyWordLength = parseInt(keyWord.length) + parseInt(i)
       return `${name.slice(0, i)}<span class="highlight">${name.slice(i, keyWordLength)}</span>${name.slice(keyWordLength, name.length)}`
     } else if ((keyWord.length > 1) && ((name.charAt(i).toLowerCase() + name.charAt(parseInt(i) + 1).toLowerCase()) === (keyWord.charAt(0).toLowerCase() + keyWord.charAt(1).toLowerCase()))) {
-      let keyWordLength = parseInt(keyWord.length) + parseInt(i)
       return `${name.slice(0, i)}<span class="highlight">${name.slice(i, keyWordLength)}</span>${name.slice(keyWordLength, name.length)}`
     }
   }
@@ -153,7 +152,9 @@ form.addEventListener('submit', (e) => {
     })
 })
 
-const addToDeletedUsers = (btnVal) => {
+// HERE'S WHERE ALL THE EXTRA WORK STARTS
+
+/* const addToDeletedUsers = (btnVal) => {
   const arrKeys = Object.keys(arrayOfUsers[0])
   console.log('this is the arrkeys', arrKeys)
   for (let i = 0; i < arrayOfUsers.length; i++) {
@@ -161,9 +162,7 @@ const addToDeletedUsers = (btnVal) => {
       deletedUsers.push({[arrKeys[0]] : arrayOfUsers[i][arrKeys[0]], [arrKeys[1]] : arrayOfUsers[i][arrKeys[1]]})
     }
   }
-}
-
-// HERE'S WHERE ALL THE EXTRA WORK STARTS
+} */
 
 /* const arrKeys = Object.keys(arrayOfUsers[0])
 
@@ -191,6 +190,7 @@ console.log('this is arrobj', arrObj) */
 
 const user = document.querySelectorAll('.user')
 const removeUserBtn = document.querySelectorAll('.remove-user')
+
 let deletedUsers = []
 
 removeUserBtn.forEach((btn) => {
