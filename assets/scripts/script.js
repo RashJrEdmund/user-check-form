@@ -22,22 +22,22 @@ const arrayOfUsers = [
   { name: 'Ashley Jones', age: 15 },
   { name: 'Kilian Mbappe', age: 26 },
   { name: 'Christiano Ronaldo', age: 37 },
-  { name: 'Leonel Messi', age: 36 },
-  { name: 'Zlatan Ibrahim', age: 40 },
-  { name: 'Lebron James', age: 37 },
-  { name: 'Jamel Morant', age: 21 },
+  { name: 'Leonel Messi', age: 35 },
+  { name: 'Zlatan Ibrahim', age: 41 },
+  { name: 'Lebron James', age: 38 },
+  { name: 'Jamel Morant', age: 23 },
   { name: 'Steve Dogllas', age: 19 },
   { name: 'Steve Rogers', age: 30 },
   { name: 'Vin Diesel', age: 28 },
-  { name: 'Jack Sparrow', age: 28 },
+  { name: 'Jack Sparrow', age: 59 },
   { name: 'Senior Dev', age: 19 },
   { name: 'Jango Kelmith', age: 20 }
 ]
 
 const form = document.querySelector('form')
 const userContainers = document.querySelector('.all-users')
-const user = document.querySelectorAll('.user')
-const removeUserBtn = document.querySelectorAll('.remove-user')
+const nameInput = document.querySelector('#search-name')
+const ageInput = document.querySelector('#search-age')
 
 const asssi = 'manda'
 console.log(asssi.toLocaleUpperCase())
@@ -48,7 +48,7 @@ function displayUser ({ age, name }, acronym, highlighted) {
     <div class="user-profile">${acronym}</div>
     <div>
         <div class="text">
-            <p class="user-name">${name}<!--/*${name == '' ? name : getHIlight(name, highlighted)} */ --></p>
+            <p class="user-name">${nameInput.value.length === 0 ? name : getHilight(name, highlighted)}</p>
             <p class="user-age">${age} year${age > 1 ? 's' : ''}</p>
         </div>
         <button class="remove-user" value="${name} ${age}"><span>X</span> Remove user</button>
@@ -56,11 +56,14 @@ function displayUser ({ age, name }, acronym, highlighted) {
   </div>`
 }
 
-const getHIlight = (name, keyWord) => {
+const getHilight = (name, keyWord) => {
   for ( let i in name) {
     if (name.toLowerCase() === keyWord.toLowerCase()) {
       return name
-    } else if (name.charAt(i).toLowerCase() === keyWord.charAt(0).toLowerCase()) {
+    } else if ((keyWord.length === 1) && (name.charAt(i).toLowerCase() === keyWord.charAt(0).toLowerCase())) {
+      let keyWordLength = parseInt(keyWord.length) + parseInt(i)
+      return `${name.slice(0, i)}<span class="highlight">${name.slice(i, keyWordLength)}</span>${name.slice(keyWordLength, name.length)}`
+    } else if ((keyWord.length > 1) && ((name.charAt(i).toLowerCase() + name.charAt(parseInt(i) + 1).toLowerCase()) === (keyWord.charAt(0).toLowerCase() + keyWord.charAt(1).toLowerCase()))) {
       let keyWordLength = parseInt(keyWord.length) + parseInt(i)
       return `${name.slice(0, i)}<span class="highlight">${name.slice(i, keyWordLength)}</span>${name.slice(keyWordLength, name.length)}`
     }
@@ -109,32 +112,7 @@ function searchUsersLoop (name, age) { // for loop method of searching
   ); */
 }
 
-// form.addEventListener('submit', (e) => {
-//   e.preventDefault()
-//   userContainers.innerHTML = displayUsers(
-//     searchUsers(e.target.name.value, +e.target.age.value)
-//   )
-// })
-
 // boundary line
-
-/* function searchUsers (name, age) {
-  return new Promise ((resolve, reject) => {
-    setTimeout(() => {
-      if (shouldResolve ()) {
-        resolve(
-          arrayOfUsers.filter(
-            (user) =>
-            (!name || searchUsers(user.name, name)) &&
-            (!age || user.age === age)
-          )
-        )
-      }else {
-        reject([])
-      }
-    }, 2000)
-  })
-} */
 
 function searchUsers (name, age) {
   return new Promise((resolve, reject) => {
@@ -162,7 +140,9 @@ function renderMessage (message) {
 form.addEventListener('submit', (e) => {
   e.preventDefault()
   userContainers.innerHTML = renderMessage('searching users...')
-  searchUsers(e.target.name.value, +e.target.age.value)
+  console.log(nameInput.value.length)
+  console.log(ageInput.value)
+  searchUsers(e.target.name.value, +e.target.age.value) // this another way to pass these inputs
     .then((result) => {
       userContainers.innerHTML = result
     })
@@ -173,23 +153,7 @@ form.addEventListener('submit', (e) => {
     })
 })
 
-/* removeUserBtn.forEach((btn) => {
-  btn.addEventListener('click', () => {
-    console.log(btn, parseInt(btn.value))
-    let firsTwoLetters = ''
-    let template = ''
-    for (let i = 0; i < arrayOfUsers.length; i++) {
-      if (i == btn.value) {
-        continue
-      }
-      firsTwoLetters = getInitials(arrayOfUsers[i].name)
-      template += displayUser(arrayOfUsers[i], firsTwoLetters)
-    }
-    userContainers.innerHTML = template
-  })
-}) */
-
-const checkBtnValue = (btnVal) => {
+const addToDeletedUsers = (btnVal) => {
   const arrKeys = Object.keys(arrayOfUsers[0])
   console.log('this is the arrkeys', arrKeys)
   for (let i = 0; i < arrayOfUsers.length; i++) {
@@ -199,7 +163,7 @@ const checkBtnValue = (btnVal) => {
   }
 }
 
-let deletedUsers = []
+// HERE'S WHERE ALL THE EXTRA WORK STARTS
 
 /* const arrKeys = Object.keys(arrayOfUsers[0])
 
@@ -208,15 +172,34 @@ const arrObj = arrKeys.map((key) => { // the .map() method takes an anonymous fu
 })
 console.log('this is arrobj', arrObj) */
 
+/* function removeDeleted (exception) { // for loop method of searching
+  const results = []
+  for (let i in arrayOfUsers) {
+    for (let j in exception) {
+      let isFound = false
+      if ((arrayOfUsers[i].name + ' ' + arrayOfUsers[i].age ) === (exception[j].name + ' ' + exception[j].age)) {
+        isFound = true
+      }
+      if ((parseInt(j) === parseInt(exception.length - 1)) && (isFound === false)) {
+        results.push(arrayOfUsers[i])
+      }
+    }
+  }
+
+  return displayUsers(results)
+}
+
+const user = document.querySelectorAll('.user')
+const removeUserBtn = document.querySelectorAll('.remove-user')
+let deletedUsers = []
+
 removeUserBtn.forEach((btn) => {
   btn.addEventListener('click', () => {
-    console.log('shishs')
-    console.log(btn.value)
-    checkBtnValue(btn.value)
-    console.log('these are the deleted users', deletedUsers)
+    addToDeletedUsers(btn.value)
+    console.log('these are the deleted values', deletedUsers)
+    userContainers.innerHTML = removeDeleted(deletedUsers)
     user.forEach((someone) => {
-      // console.log(someone)
       someone.classList.toggle('.display-div')
     })
   })
-})
+}) */
