@@ -165,7 +165,6 @@ form.addEventListener('submit', (e) => {
 } */
 
 /* const arrKeys = Object.keys(arrayOfUsers[0])
-
 const arrObj = arrKeys.map((key) => { // the .map() method takes an anonymous function as a parameter
   return { [key]: arrayOfUsers[0][key] }
 })
@@ -184,15 +183,11 @@ console.log('this is arrobj', arrObj) */
       }
     }
   }
-
   return displayUsers(results)
 }
-
 const user = document.querySelectorAll('.user')
 const removeUserBtn = document.querySelectorAll('.remove-user')
-
 let deletedUsers = []
-
 removeUserBtn.forEach((btn) => {
   btn.addEventListener('click', () => {
     addToDeletedUsers(btn.value)
