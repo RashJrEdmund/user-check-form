@@ -1,360 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/styles/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/styles/style.css" />
     <title>User check page</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="whole">
-        <form class="section1">
-            <div>
-                <p>Name</p>
-                <input type="text" placeholder="search User" name="name" id="search-name">
-            </div>
-           <div>
-                <p>Age</p>
-                <input type="number" placeholder="search age" name="age" id="search-age">
-            </div>
-            <button type="submit">Search</button>
-        </form>
-        <div class="all-users">
-            <div class="user">
-                <div class="user-profile">RO</div>
-                <div>
-                    <div class="text">
-                        <p class="user-name">Rash Oracle</p>
-                        <p class="user-age">20 yrs</p>
-                    </div>
-                    <button class="remove-user" value="Rash Oracle 20"><span>X</span> Remove user</button>
-                </div>
-            </div>
-            <div class="user">
-                <div class="user-profile">NO</div>
-                <div>
-                    <div class="text">
-                        <p class="user-name">Nana Otto</p>
-                        <p class="user-age">20 yrs</p>
-                    </div>
-                    <button class="remove-user" value="Nana Otto 20"><span>X</span> Remove user</button>
-                </div>
-            </div>
-            <div class="user">
-                <div class="user-profile">JJ</div>
-                <div>
-                    <div class="text">
-                        <p class="user-name">Jr Jr</p>
-                        <p class="user-age">21 yrs</p>
-                    </div>
-                    <button class="remove-user" value="Jr Jr 21"><span>X</span> Remove user</button>
-                </div>
-            </div>
-            <div class="user">
-                <div class="user-profile">ES</div>
-                <div>
-                    <div class="text">
-                        <p class="user-name">Edmund Son</p>
-                        <p class="user-age">22 yrs</p>
-                    </div>
-                    <button class="remove-user" value="Edmund Son 22"><span>X</span> Remove user</button>
-                </div>
-            </div>
-            <div class="user">
-                <div class="user-profile">OF</div>
-                <div>
-                    <div class="text">
-                        <p class="user-name">Orashus F.</p>
-                        <p class="user-age">17 yrs</p>
-                    </div>
-                    <button class="remove-user" value="Orashus F. 17"><span>X</span> Remove user</button>
-                </div>
-            </div>
-            <div class="user">
-                <div class="user-profile">LD</div>
-                <div>
-                    <div class="text">
-                        <p class="user-name">Luciernaga Ndi</p>
-                        <p class="user-age">19 yrs</p>
-                    </div>
-                    <button class="remove-user" value="Luciernaga Ndi 19"><span>X</span> Remove user</button>
-                </div>
-            </div>
-            <div class="user">
-                <div class="user-profile">TG</div>
-                <div>
-                    <div class="text">
-                        <p class="user-name">The Godfather</p>
-                        <p class="user-age">20 yrs</p>
-                    </div>
-                    <button class="remove-user" value="The Godfather 20"><span>X</span> Remove user</button>
-                </div>
-            </div>
-            <div class="user">
-                <div class="user-profile">SK</div>
-                <div>
-                    <div class="text">
-                        <p class="user-name">Storm King</p>
-                        <p class="user-age">16 yrs</p>
-                    </div>
-                    <button class="remove-user" value="Storm King 16"><span>X</span> Remove user</button>
-                </div>
-            </div>
-            <div class="user">
-                <div class="user-profile">BR</div>
-                <div>
-                    <div class="text">
-                        <p class="user-name">Brandy Jonathan</p>
-                        <p class="user-age">21 yrs</p>
-                    </div>
-                    <button class="remove-user" value="Brandy Jonathan 21"><span>X</span> Remove user</button>
-                </div>
-            </div>
-            <div class="user">
-                <div class="user-profile">MA</div>
-                <div>
-                    <div class="text">
-                        <p class="user-name">Marry Anne</p>
-                        <p class="user-age">20 yrs</p>
-                    </div>
-                    <button class="remove-user" value="Marry Anne 20"><span>X</span> Remove user</button>
-                </div>
-            </div>
-            <div class="user">
-                <div class="user-profile">AM</div>
-                <div>
-                    <div class="text">
-                        <p class="user-name">Alaric Mboma</p>
-                        <p class="user-age">21 yrs</p>
-                    </div>
-                    <button class="remove-user" value="Alaric Mboma 21"><span>X</span> Remove user</button>
-                </div>
-            </div>
-            <div class="user">
-                <div class="user-profile">SE</div>
-                <div>
-                    <div class="text">
-                        <p class="user-name">Shey Emma</p>
-                        <p class="user-age">29 yrs</p>
-                    </div>
-                    <button class="remove-user" value="Shey Emma 29"><span>X</span> Remove user</button>
-                </div>
-            </div>
-            <div class="user">
-                <div class="user-profile">TM</div>
-                <div>
-                    <div class="text">
-                        <p class="user-name">Tata Malone</p>
-                        <p class="user-age">20 yrs</p>
-                    </div>
-                    <button class="remove-user" value="Tata Malone 20"><span>X</span> Remove user</button>
-                </div>
-            </div>
-            <div class="user">
-                <div class="user-profile">AB</div>
-                <div>
-                    <div class="text">
-                        <p class="user-name">Abu Bea</p>
-                        <p class="user-age">24 yrs</p>
-                    </div>
-                    <button class="remove-user" value="Abu Bea 24"><span>X</span> Remove user</button>
-                </div>
-            </div>
-            <div class="user">
-                <div class="user-profile">CP</div>
-                <div>
-                    <div class="text">
-                        <p class="user-name">Charles Peterson</p>
-                        <p class="user-age">24 yrs</p>
-                    </div>
-                    <button class="remove-user" value="Charles Peterson 24"><span>X</span> Remove user</button>
-                </div>
-            </div>
-            <div class="user">
-                <div class="user-profile">MG</div>
-                <div>
-                    <div class="text">
-                        <p class="user-name">Mr. Gaston</p>
-                        <p class="user-age">31 yrs</p>
-                    </div>
-                    <button class="remove-user" value="Mr. Gaston 31"><span>X</span> Remove user</button>
-                </div>
-            </div>
-            <div class="user">
-                <div class="user-profile">UL</div>
-                <div>
-                    <div class="text">
-                        <p class="user-name">Mr. Leonard</p>
-                        <p class="user-age">30 yrs</p>
-                    </div>
-                    <button class="remove-user" value="Mr. Leonard 30"><span>X</span> Remove user</button>
-                </div>
-            </div>
-            <div class="user">
-                <div class="user-profile">MF</div>
-                <div>
-                    <div class="text">
-                        <p class="user-name">Mme Faith</p>
-                        <p class="user-age">28 yrs</p>
-                    </div>
-                    <button class="remove-user" value="Mme Faith 28"><span>X</span> Remove user</button>
-                </div>
-            </div>
-            <div class="user">
-                <div class="user-profile">GH</div>
-                <div>
-                    <div class="text">
-                        <p class="user-name">Gran Humphry</p>
-                        <p class="user-age">20 yrs</p>
-                    </div>
-                    <button class="remove-user" value="Gran Humphry 20"><span>X</span> Remove user</button> 
-                </div>
-            </div>
-            <div class="user">
-                <div class="user-profile">MA</div>
-                <div>
-                    <div class="text">
-                        <p class="user-name">Mr Array</p>
-                        <p class="user-age">26 yrs</p>
-                    </div>
-                    <button class="remove-user" value="Mr Array 26"><span>X</span> Remove user</button>
-                </div>
-            </div>
-            <div class="user">
-                <div class="user-profile">AJ</div>
-                <div>
-                    <div class="text">
-                        <p class="user-name">Ashley Jones</p>
-                        <p class="user-age">15 yrs</p>
-                    </div>
-                    <button class="remove-user" value="Ashley Jones 15"><span>X</span> Remove user</button>
-                </div>
-            </div>
-            <div class="user">
-                <div class="user-profile">KM</div>
-                <div>
-                    <div class="text">
-                        <p class="user-name">Kilian Mbappe</p>
-                        <p class="user-age">26 yrs</p>
-                    </div>
-                    <button class="remove-user" value="Kilian Mbappe 26"><span>X</span> Remove user</button>
-                </div>
-            </div>
-            <div class="user">
-                <div class="user-profile">CR</div>
-                <div>
-                    <div class="text">
-                        <p class="user-name">Christiano Ronaldo</p>
-                        <p class="user-age">37 yrs</p>
-                    </div>
-                    <button class="remove-user" value="Christiano Ronaldo 37"><span>X</span> Remove user</button>
-                </div>
-            </div>
-            <div class="user">
-                <div class="user-profile">LM</div>
-                <div>
-                    <div class="text">
-                        <p class="user-name">Leonel Messi</p>
-                        <p class="user-age">35 yrs</p>
-                    </div>
-                    <button class="remove-user" value="Leonel Messi 36"><span>X</span> Remove user</button>
-                </div>
-            </div>
-            <div class="user">
-                <div class="user-profile">ZI</div>
-                <div>
-                    <div class="text">
-                        <p class="user-name">Zlatan Ibrahim</p>
-                        <p class="user-age">41 yrs</p>
-                    </div>
-                    <button class="remove-user" value="Zlatan Ibrahim 40"><span>X</span> Remove user</button>
-                </div>
-            </div>
-            <div class="user">
-                <div class="user-profile">LJ</div>
-                <div>
-                    <div class="text">
-                        <p class="user-name">Lebron James</p>
-                        <p class="user-age">38 yrs</p>
-                    </div>
-                    <button class="remove-user" value="Lebron James 37"><span>X</span> Remove user</button>
-                </div>
-            </div>
-            <div class="user">
-                <div class="user-profile">JM</div>
-                <div>
-                    <div class="text">
-                        <p class="user-name">Jamel Morant</p>
-                        <p class="user-age">23 yrs</p>
-                    </div>
-                    <button class="remove-user" value="Jamel Morant 21"><span>X</span> Remove user</button>
-                </div>
-            </div>
-            <div class="user">
-                <div class="user-profile">SD</div>
-                <div>
-                    <div class="text">
-                        <p class="user-name">Steve Dogllas</p>
-                        <p class="user-age">19 yrs</p>
-                    </div>
-                    <button class="remove-user" value="Steve Dogllas 19"><span>X</span> Remove user</button>
-                </div>
-            </div>
-            <div class="user">
-                <div class="user-profile">SR</div>
-                <div>
-                    <div class="text">
-                        <p class="user-name">Steve Rogers</p>
-                        <p class="user-age">30 yrs</p>
-                    </div>
-                    <button class="remove-user" value="Steve Rogers 30"><span>X</span> Remove user</button>
-                </div>
-            </div>
-            <div class="user">
-                <div class="user-profile">VD</div>
-                <div>
-                    <div class="text">
-                        <p class="user-name">Vin Diesel</p>
-                        <p class="user-age">28 yrs</p>
-                    </div>
-                    <button class="remove-user" value="Vin Diesel 28"><span>X</span> Remove user</button>
-                </div>
-            </div>
-            <div class="user">
-                <div class="user-profile">JS</div>
-                <div>
-                    <div class="text">
-                        <p class="user-name">Jack Sparrow</p>
-                        <p class="user-age">59 yrs</p>
-                    </div>
-                    <but
-                    ton class="remove-user" value="Jack Sparrow 28"><span>X</span> Remove user</but>
-                </div>
-            </div>
-            <div class="user">
-                <div class="user-profile">SD</div>
-                <div>
-                    <div class="text">
-                        <p class="user-name">Senior Dev</p>
-                        <p class="user-age">19 yrs</p>
-                    </div>
-                    <button class="remove-user" value="Senior Dev 19"><span>X</span> Remove user</button>
-                </div>
-            </div>
-            <div class="user">
-                <div class="user-profile">JK</div>
-                <div>
-                    <div class="text">
-                        <p class="user-name">Jango Kelmith</p>
-                        <p class="user-age">20 yrs</p>
-                    </div>
-                    <button class="remove-user" value="Jango Kelmith 20"><span>X</span> Remove user</button>
-                </div>
-            </div>
+      <div class="overlay"></div>
+      <div class="options">
+        <span></span>
+        <span></span>
+        <span></span>
+
+        <ul class="select">
+          <li id="reset">reset</li>
+          <li>use initials/profile</li>
+          <li>
+            sort by
+            <select id="sort_by">
+              <option value="A-z">A-z</option>
+              <option value="z-A">z-A</option>
+              <option value="age">Age</option>
+            </select>
+          </li>
+        </ul>
+      </div>
+
+      <form class="section1">
+        <div>
+          <p>Name</p>
+          <input
+            type="text"
+            placeholder="search User"
+            name="name"
+            id="search-name"
+          />
         </div>
+        <div>
+          <p>Age</p>
+          <input
+            type="number"
+            placeholder="search age"
+            name="age"
+            id="search-age"
+          />
+        </div>
+        <button type="submit">Search</button>
+      </form>
+      <div class="all-users"></div>
     </div>
 
-    <script src="assets/scripts/script.js"></script>
-</body>
+    <script src="assets/scripts/script.js" type="module"></script>
+  </body>
 </html>
