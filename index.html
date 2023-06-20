@@ -9,25 +9,7 @@
   </head>
   <body>
     <div class="whole">
-      <div class="overlay"></div>
-      <div class="options">
-        <span></span>
-        <span></span>
-        <span></span>
-
-        <ul class="select">
-          <li id="reset">reset</li>
-          <li>use initials/profile</li>
-          <li>
-            sort by
-            <select id="sort_by">
-              <option value="A-z">A-z</option>
-              <option value="z-A">z-A</option>
-              <option value="age">Age</option>
-            </select>
-          </li>
-        </ul>
-      </div>
+      <p id="reset" title="reset all">reset</p>
 
       <form class="section1">
         <div>
@@ -48,7 +30,7 @@
             id="search-age"
           />
         </div>
-        <button type="submit">Search</button>
+        <button type="submit" title="search name or and age">Search</button>
       </form>
       <div class="all-users"></div>
     </div>
