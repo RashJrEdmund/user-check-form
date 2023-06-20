@@ -121,7 +121,7 @@ function searchUsers (name, age) {
       let bool = false
       for (let i = 0; i < arrayOfUsers.length; i++) {
         if (
-          (!name ||
+          (!name || /* this is to solve JSCD lint error */
             arrayOfUsers[i].name.toLowerCase().includes(name.toLowerCase())) &&
           (!age || arrayOfUsers[i].age === age)
         ) {
