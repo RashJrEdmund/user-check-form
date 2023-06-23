@@ -14,7 +14,7 @@ button {
 }
 
 .whole {
-  background-color: burlywood;
+  background-color: #deb887;
   width: 95vw;
   max-width: 500px;
   height: fit-content;
@@ -22,9 +22,21 @@ button {
   padding: 10px;
 }
 
-#reset {
+.top-section {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.top-section #reset {
   color: #a52a2a;
   cursor: pointer;
+}
+
+.top-section #show-stats {
+  font-size: 15px;
 }
 
 .section1 {

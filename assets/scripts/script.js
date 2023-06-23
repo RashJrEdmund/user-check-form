@@ -3,12 +3,14 @@ import {
   getSessionData,
   resetAll,
   renderMessage,
+  getInitials,
 } from "./utils.js";
 
 const form = document.querySelector("form");
 const userContainers = document.querySelector(".all-users");
 const nameInput = document.querySelector("#search-name");
 const reset = document.querySelector("#reset");
+const stats = document.querySelector("#show-stats");
 
 reset.addEventListener("click", resetAll);
 
@@ -79,25 +81,18 @@ const getHilight = (name, keyWord) => {
   }
 };
 
-const getInitials = (name) => {
-  const arra = [...name];
-  let final = arra[0];
-  for (let j = 0; j < arra.length; j++) {
-    if (arra[j].includes(" ") && typeof (arra[j + 1] === String)) {
-      final += arra[j + 1];
-    }
-  }
-  return final;
-};
-
 export function displayUsers(persons, highlight) {
   // for loop method of displaying
+  stats.innerHTML = `showing ${persons.length} use${
+    persons.length > 1 ? "rs" : "r"
+  }`;
+
   userContainers.innerHTML = "";
   let firsTwoLetters = "";
 
-  persons.forEach((person) => {
-    firsTwoLetters = getInitials(person.name);
-    displayUser(person, firsTwoLetters, highlight);
+  persons.forEach(({ age, name }) => {
+    firsTwoLetters = getInitials(name);
+    displayUser({ age, name }, firsTwoLetters, highlight);
   });
 }
 
@@ -147,6 +142,4 @@ form.addEventListener("submit", (e) => {
     });
 });
 
-(function () {
-  displayUsers(getSessionData() || []);
-})();
+(() => displayUsers(getSessionData() || []))();
