@@ -1,0 +1,158 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  background-color: #999;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  white-space: nowrap;
+}
+
+.whole {
+  background-color: #deb887;
+  width: 95vw;
+  max-width: 500px;
+  height: fit-content;
+  margin: 4rem auto;
+  padding: 10px;
+}
+
+.top-section {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.top-section #reset {
+  color: #a52a2a;
+  cursor: pointer;
+}
+
+.top-section #show-stats {
+  font-size: 15px;
+}
+
+.section1 {
+  background-color: #555;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  height: fit-content;
+  margin: 1rem 0;
+  padding: 10px;
+}
+
+.section1 input {
+  height: 30px;
+  min-width: 195px;
+  max-width: 90%;
+}
+
+.section1 button {
+  background-color: #a52a2a;
+  border: none;
+  color: #fff;
+  height: 30px;
+  align-self: flex-end;
+}
+
+.all-users {
+  padding: 10px;
+  position: relative;
+}
+
+.user {
+  background-color: #777;
+  margin: 1rem auto;
+  display: flex;
+  align-items: center;
+  height: fit-content;
+  min-height: 70px;
+  transition: 0.5s;
+}
+
+.display-div {
+  background-color: #080;
+  position: absolute;
+  width: 100%;
+  top: unset;
+  right: -100%;
+}
+
+.user .user-profile {
+  /* background-image: url("../images/user\ profile.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; */
+
+  background-color: #000;
+  border-radius: 50px;
+  color: #a52a2a;
+  width: 115px;
+  height: 90px;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+}
+
+.user > div:nth-of-type(2) {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user .user-name,
+.user .user-age {
+  font-size: large;
+  margin-left: 1rem;
+}
+
+.user-name .highlight {
+  background-color: #333;
+  color: #ffd700;
+}
+
+.user .remove-user {
+  background-color: #a52a2a;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 5px;
+  width: fit-content;
+  height: fit-content;
+  padding: 10px 5px;
+  position: relative;
+}
+
+.user .remove-user::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translate(-50%, calc(-50% + 0.5px)) rotate(45deg);
+  background-color: transparent;
+  width: 0;
+  height: 0;
+  margin: 0;
+  border-left: 12px solid #a52a2a;
+  border-top: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 12px solid #a52a2a;
+}
+
+.user button span {
+  font-size: 30px;
+  color: #000;
+  margin-right: 2px;
+}
